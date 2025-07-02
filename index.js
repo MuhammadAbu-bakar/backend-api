@@ -1,3 +1,5 @@
+require('dotenv').config(); // Add this at the very top
+
 const express = require('express');
 const cors = require('cors');
 const twilio = require('twilio');
@@ -6,17 +8,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// === DIRECTLY HARDCODED TWILIO CREDENTIALS ===
-const accountSid = 'AC2be917b1fe6b58d1ec24a68bd2b4447d';
-const authToken = '1b890839696cf850dd94ca857d1c67cf';
-const fromNumber = 'whatsapp:+14155238886'; // Twilio sandbox number
+// Use credentials from .env
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const fromNumber = process.env.TWILIO_WHATSAPP_FROM;
+const PORT = process.env.PORT || 4000;
 
 const client = twilio(accountSid, authToken);
 
-// === DIRECTLY HARDCODEED PORT ===
-const PORT = 4000;
 app.post('/send-whatsapp', async (req, res) => {
-    console.log(req.body);
+    console.log(req.body); // For debugging
+  
     try {
       const { phone, message } = req.body;
       if (!phone || !message) {

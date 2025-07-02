@@ -1,0 +1,1 @@
+-e "# Environment variables\n.env\n.env.local\n.env.development\n.env.test\n.env.production\n\n# Node modules\nnode_modules/\n\n# OS files\n.DS_Store\n\n# Debug logs\nnpm-debug.log*\n\n# Build directories\nbuild/\ndist/\n\n# Expo\n.expo/\n.expo-shared/\n" 
