@@ -36,5 +36,8 @@ app.post('/send-whatsapp', async (req, res) => {
       res.status(500).json({ error: err.message });
     }
   });
+  app.get('/send-whatsapp', (req, res) => {
+    res.send('WhatsApp API is running. Use POST to send messages.');
+  });
   
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
